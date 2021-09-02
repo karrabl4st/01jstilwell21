@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Lab 01_tree.pdf</name>
+			<type>1</type>
+			<location>C:/Users/Jacqueline/Downloads/Lab 01_tree.pdf</location>
+		</link>
+	</linkedResources>
 </projectDescription>
