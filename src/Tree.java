@@ -35,13 +35,5 @@ public class Tree {
 		return maxSegments;
 		
 	}
-	
-	public void drawOn(Graphics g, int x, int y, double angle) {
-		
-		
-		
-	}
-	
-	
 
 }

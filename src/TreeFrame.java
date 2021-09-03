@@ -19,23 +19,11 @@ public class TreeFrame extends JFrame {
         
 	}
 
-	/* paint method should first create initial branch
-	 * call itself, realize that segment != 0
-	 * and use a formula in order to find the second x, y coordinates
-	 * afterwards, set first x, y coordinates as second
-	 * then call itself if segment is less than wantedSegments
-	 */
 	@Override
 	public void paint(Graphics g) {
-		super.paint(g);
-		if (segment == 0) {
-				
-		} else {
-		}
-		segment++;
-//		if (segment < maxSegments) {
-//			paint(g);
-//		}
-	}	
+		
+		Tree t = new Tree(20.0, 9);
+		
+	}
 
 }
