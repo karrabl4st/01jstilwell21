@@ -1,23 +1,23 @@
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
-
 import javax.swing.JFrame;
+
 
 public class TreeFrame extends JFrame {
 	
-	int[] offsetDegree = new int[2];
-	int branchLength;
-	int wantedSegments;
 	static int segment = 0;
 	
-	public TreeFrame (String title, int[] offsetDegree, int branchLength, int wantedSegments) {
+	public TreeFrame(String title) {
 		
-		super(title);
-		this.offsetDegree = offsetDegree;
-		this.branchLength = branchLength;
-		this.wantedSegments = wantedSegments;
-		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+        this.setPreferredSize(new Dimension(800,600));
+        this.setBackground(Color.white);
+        this.pack();
+        
 	}
-	
+
 	/* paint method should first create initial branch
 	 * call itself, realize that segment != 0
 	 * and use a formula in order to find the second x, y coordinates
@@ -32,9 +32,9 @@ public class TreeFrame extends JFrame {
 		} else {
 		}
 		segment++;
-		if (segment < wantedSegments) {
-			paint(g);
-		}
+//		if (segment < maxSegments) {
+//			paint(g);
+//		}
 	}	
 
 }
