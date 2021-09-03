@@ -12,6 +12,7 @@ public class TreeFrame extends JFrame {
 	public TreeFrame (String title, int[] offsetDegree, int branchLength, int wantedSegments) {
 		
 		super(title);
+		this.offsetDegree = offsetDegree;
 		this.branchLength = branchLength;
 		this.wantedSegments = wantedSegments;
 		
