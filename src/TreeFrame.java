@@ -10,6 +10,7 @@ public class TreeFrame extends JFrame {
 	
 	public TreeFrame(String title) {
 		
+		this.setTitle(title);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setPreferredSize(new Dimension(800,600));
