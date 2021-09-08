@@ -22,6 +22,7 @@ public class TreeFrame extends JFrame {
 	@Override
 	public void paint(Graphics g) {
 		
+		super.paint(g);
 		Tree t = new Tree(20.0, 9);
 		
 	}
