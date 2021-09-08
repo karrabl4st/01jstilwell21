@@ -67,6 +67,7 @@ public class Tree {
 	
 	private int branchLength(int segsRemaining) {
 		
+		//0 is placeholder
 		int branchLength = 0;
 		
 		return branchLength;
