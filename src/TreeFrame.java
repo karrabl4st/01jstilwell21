@@ -24,6 +24,7 @@ public class TreeFrame extends JFrame {
 		
 		super.paint(g);
 		Tree t = new Tree(20.0, 9);
+		t.drawOn(g, 400, 550, 20.0);
 		
 	}
 

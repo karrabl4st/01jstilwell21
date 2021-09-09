@@ -38,13 +38,21 @@ public class Tree {
 	
 	public void drawOn(Graphics g, int x, int y, double angle) {
 		
+		g.drawLine(x, y, x, y - 100);
 		
+		drawTree(g, x, y - 100, angle, maxSegments);
 		
 	}
 	
 	private void drawTree(Graphics g, int sx, int sy, double sAngle, int segsRemaining) {
 		
 		if (segsRemaining > 0) {
+			
+			int len = segsRemaining * 10;
+			int nx = (int) (sx + len * Math.cos(sAngle));
+			int ny = (int) (sy + len * Math.sin(sAngle));
+			
+			g.drawLine(sx, sy, nx, ny);
 			
 			if (segsRemaining < 4) {
 				
@@ -53,7 +61,8 @@ public class Tree {
 				
 			}
 			
-			drawTree(g, sx, sy, sAngle, segsRemaining);
+			segsRemaining--;
+			drawTree(g, nx, ny, sAngle, segsRemaining);
 			
 		}
 		
