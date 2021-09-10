@@ -48,7 +48,7 @@ public class Tree {
 		
 		
 			
-		int len = segsRemaining * 10;
+		int len = branchLength(segsRemaining);
 		int nx = (int) (sx + len * Math.cos(sAngle));
 		int nx2 = (int) (sx - len * Math.cos(sAngle));
 		int ny = (int) (sy - len * Math.sin(sAngle));
@@ -60,7 +60,6 @@ public class Tree {
 			
 			if (segsRemaining < 4) {
 				
-				//0 is placeholder
 				drawLeaf(g, sx, sy, sAngle);
 				
 			}
@@ -80,8 +79,9 @@ public class Tree {
 	
 	private int branchLength(int segsRemaining) {
 		
-		//0 is placeholder
-		int branchLength = 0;
+		int max = segsRemaining * 30;
+		int min = segsRemaining * 5;
+		int branchLength = (int) ((Math.random() * (max - min)) + min);
 		
 		return branchLength;
 		

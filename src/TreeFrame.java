@@ -23,7 +23,7 @@ public class TreeFrame extends JFrame {
 	public void paint(Graphics g) {
 		
 		super.paint(g);
-		Tree t = new Tree(Math.toDegrees(180), 7);
+		Tree t = new Tree(Math.toRadians(.33), 5);
 		t.drawOn(g, 400, 550, 20.0);
 		
 	}
