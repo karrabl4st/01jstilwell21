@@ -46,18 +46,22 @@ public class Tree {
 	
 	private void drawTree(Graphics g, int sx, int sy, double sAngle, int segsRemaining) {
 		
-		if (segsRemaining > 0) {
+		
 			
-			int len = segsRemaining * 10;
-			int nx = (int) (sx + len * Math.cos(sAngle));
-			int ny = (int) (sy + len * Math.sin(sAngle));
+		int len = segsRemaining * 10;
+		int nx = (int) (sx + len * Math.cos(sAngle));
+		int nx2 = (int) (sx - len * Math.cos(sAngle));
+		int ny = (int) (sy - len * Math.sin(sAngle));
 			
-			g.drawLine(sx, sy, nx, ny);
+		g.drawLine(sx, sy, nx, ny);
+		g.drawLine(sx, sy, nx2, ny);
+			
+		if (segsRemaining > 1) {
 			
 			if (segsRemaining < 4) {
 				
 				//0 is placeholder
-				drawLeaf(g, sx, sy, 0);
+				drawLeaf(g, sx, sy, sAngle);
 				
 			}
 			
