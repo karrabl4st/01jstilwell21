@@ -1,4 +1,6 @@
+import java.awt.BasicStroke;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class Tree {
 	
@@ -38,9 +40,8 @@ public class Tree {
 	
 	public void drawOn(Graphics g, int x, int y, double angle) {
 		
-		g.drawLine(x, y, x, y - 100);
-		
-		drawTree(g, x, y - 100, angle, maxSegments);
+		drawTree(g, x, y, angle, maxSegments);
+
 		
 	}
 	
@@ -52,9 +53,14 @@ public class Tree {
 		int nx = (int) (sx + len * Math.cos(sAngle));
 		int nx2 = (int) (sx - len * Math.cos(sAngle));
 		int ny = (int) (sy - len * Math.sin(sAngle));
-			
-		g.drawLine(sx, sy, nx, ny);
-		g.drawLine(sx, sy, nx2, ny);
+		
+		double ran1 = Math.random();
+		double ran2 = Math.random();
+		Graphics2D g2 = (Graphics2D) g;
+		BasicStroke st = new BasicStroke(15);
+		g2.setStroke(st);
+		g2.drawLine(sx, sy, nx, ny);
+		//g.drawLine(sx, sy, nx2, ny);
 			
 		if (segsRemaining > 1) {
 			
@@ -66,6 +72,7 @@ public class Tree {
 			
 			segsRemaining--;
 			drawTree(g, nx, ny, sAngle, segsRemaining);
+			drawTree(g, nx, ny, sAngle+Math.PI/6, segsRemaining);
 			
 		}
 		
@@ -79,8 +86,8 @@ public class Tree {
 	
 	private int branchLength(int segsRemaining) {
 		
-		int max = segsRemaining * 30;
-		int min = segsRemaining * 5;
+		int max = segsRemaining * 15;
+		int min = segsRemaining * 10;
 		int branchLength = (int) ((Math.random() * (max - min)) + min);
 		
 		return branchLength;
