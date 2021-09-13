@@ -38,27 +38,31 @@ public class Tree {
 		
 	}
 	
-	public void drawOn(Graphics g, int x, int y, double angle) {
+	public void drawOn(Graphics g, int x, int y) {
 		
-		drawTree(g, x, y, angle, maxSegments);
+		drawTree(g, x, y, splitAngle, maxSegments);
 
 		
 	}
 	
 	private void drawTree(Graphics g, int sx, int sy, double sAngle, int segsRemaining) {
 		
+		int strokeWeight = segsRemaining;
+		
 		int len = branchLength(segsRemaining);
 		int nx = (int) (sx + len * Math.cos(sAngle));
 		int nx2 = (int) (sx - len * Math.cos(sAngle));
 		int ny = (int) (sy - len * Math.sin(sAngle));
 		
-		double ran1 = Math.random();
-		double ran2 = Math.random();
+		int max = 6;
+		int min = 4;
+		double ran1 = (Math.random() * (max - min)) + min;
+		double ran2 = (Math.random() * (max - min)) + min;
+		
 		Graphics2D g2 = (Graphics2D) g;
-		BasicStroke st = new BasicStroke(15);
+		BasicStroke st = new BasicStroke(strokeWeight);
 		g2.setStroke(st);
 		g2.drawLine(sx, sy, nx, ny);
-		//g.drawLine(sx, sy, nx2, ny);
 			
 		if (segsRemaining > 1) {
 			
@@ -69,8 +73,8 @@ public class Tree {
 			}
 			
 			segsRemaining--;
-			drawTree(g, nx, ny, sAngle, segsRemaining);
-			drawTree(g, nx, ny, sAngle+Math.PI/6, segsRemaining);
+			drawTree(g, nx, ny, sAngle + Math.PI/ran1, segsRemaining);
+			drawTree(g, nx, ny, sAngle - Math.PI/ran2, segsRemaining);
 			
 		}
 		
@@ -85,7 +89,7 @@ public class Tree {
 	private int branchLength(int segsRemaining) {
 		
 		int max = segsRemaining * 15;
-		int min = segsRemaining * 10;
+		int min = segsRemaining * 13;
 		int branchLength = (int) ((Math.random() * (max - min)) + min);
 		
 		return branchLength;
