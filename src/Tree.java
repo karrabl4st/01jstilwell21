@@ -47,8 +47,6 @@ public class Tree {
 	
 	private void drawTree(Graphics g, int sx, int sy, double sAngle, int segsRemaining) {
 		
-		
-			
 		int len = branchLength(segsRemaining);
 		int nx = (int) (sx + len * Math.cos(sAngle));
 		int nx2 = (int) (sx - len * Math.cos(sAngle));
