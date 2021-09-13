@@ -1,6 +1,8 @@
 import java.awt.BasicStroke;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.Color;
 
 public class Tree {
 	
@@ -51,7 +53,6 @@ public class Tree {
 		
 		int len = branchLength(segsRemaining);
 		int nx = (int) (sx + len * Math.cos(sAngle));
-		int nx2 = (int) (sx - len * Math.cos(sAngle));
 		int ny = (int) (sy - len * Math.sin(sAngle));
 		
 		int max = 6;
@@ -63,12 +64,14 @@ public class Tree {
 		BasicStroke st = new BasicStroke(strokeWeight);
 		g2.setStroke(st);
 		g2.drawLine(sx, sy, nx, ny);
+		
+		Graphics2D g3 = (Graphics2D) g;
 			
 		if (segsRemaining > 1) {
 			
 			if (segsRemaining < 4) {
 				
-				drawLeaf(g, sx, sy, sAngle);
+				drawLeaf(g3, sx, sy, sAngle);
 				
 			}
 			
@@ -80,16 +83,28 @@ public class Tree {
 		
 	}
 	
-	private void drawLeaf(Graphics g, int sx, int sy, double theta) {
+	private void drawLeaf(Graphics2D g, int sx, int sy, double theta) {
 		
+		AffineTransform xf = g.getTransform(); // safe affine transform state
+		g.translate(sx, sy); // move the coordinate origin to x,y
+		g.rotate(theta); // and rotate to align with the current growth orientation angle
 		
+		g.setColor(Color.green);
+		g.fillOval(0, 0, 10, 5);
+		g.fillOval(0, 0, 10, 5);
+		
+		g.setColor(Color.red);
+		g.fillOval(0, 0, 5, 5);
+		
+		g.setColor(Color.black);
+		g.setTransform(xf); // reset affine transform back to original state
 		
 	}
 	
 	private int branchLength(int segsRemaining) {
 		
-		int max = segsRemaining * 15;
-		int min = segsRemaining * 13;
+		int max = (int)(Math.pow(segsRemaining, 2.5));
+		int min = (int)(Math.pow(segsRemaining, 2));
 		int branchLength = (int) ((Math.random() * (max - min)) + min);
 		
 		return branchLength;
