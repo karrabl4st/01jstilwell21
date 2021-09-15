@@ -69,7 +69,7 @@ public class Tree {
 			
 		if (segsRemaining > 1) {
 			
-			if (segsRemaining < 4) {
+			if (segsRemaining < 6) {
 				
 				drawLeaf(g3, sx, sy, sAngle);
 				
